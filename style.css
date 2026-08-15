@@ -553,6 +553,9 @@ table.pricing td.fee{ font-family:var(--font-mono); color:var(--gold-soft); font
 .screenshot:hover{ transform:translateY(-6px); }
 .screenshot img{ width:100%; height:auto; }
 .screenshot-caption{ text-align:center; color:var(--text-dim); font-size:.85rem; margin-top:16px; }
+/* Force a shared aspect ratio across a row of screenshots with different native
+   dimensions, so they line up at the same height instead of each keeping its own. */
+.screenshot.equal-height img{ aspect-ratio:1600/1495; object-fit:cover; object-position:top; }
 .split-media{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
 @media (max-width:900px){ .split-media{ grid-template-columns:1fr; } }
 
