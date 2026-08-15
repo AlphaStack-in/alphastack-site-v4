@@ -534,6 +534,20 @@ table.pricing td.fee{ font-family:var(--font-mono); color:var(--gold-soft); font
 .badge-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:22px; }
 .badge{ font-family:var(--font-mono); font-size:.72rem; color:var(--text-dim); border:1px solid var(--border); padding:6px 12px; border-radius:999px; }
 
+/* ---------- Video embed (responsive 16:9, glass card) ---------- */
+.video-embed{
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  border:1px solid var(--border-hi); border-radius:var(--radius);
+  padding:14px; position:relative; overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 20px 40px -28px rgba(0,0,0,.7);
+}
+.video-embed .ratio-box{
+  position:relative; width:100%; aspect-ratio:16/9;
+  border-radius:calc(var(--radius) - 6px); overflow:hidden; background:var(--bg-soft);
+}
+.video-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+
 /* ---------- Product screenshots ---------- */
 .screenshot{ transition:transform .4s var(--ease); }
 .screenshot:hover{ transform:translateY(-6px); }
