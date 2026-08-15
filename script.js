@@ -68,15 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => el.classList.add('in'));
   }
 
-  // Animated stat counters
-  const counters = document.querySelectorAll('[data-count]');
+  // Animated stat counters — the HTML already shows the real final value (so it's
+  // correct even if JS never runs); we read that as the animation target rather
+  // than requiring a separate data-count attribute to stay in sync with it.
+  const counters = document.querySelectorAll('[data-counter]');
   if ('IntersectionObserver' in window && counters.length) {
     const co = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
-        const target = parseFloat(el.dataset.count);
+        const target = parseFloat(el.textContent);
         const suffix = el.dataset.suffix || '';
+        if (Number.isNaN(target)) { co.unobserve(el); return; }
         const duration = 1200;
         const start = performance.now();
         function tick(now) {

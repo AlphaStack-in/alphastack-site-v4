@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// Rewrites every hardcoded canonical/OG/Twitter URL across all HTML pages to
-// the single SITE_URL defined in site.config.js (or passed as a CLI arg).
+// Rewrites every hardcoded canonical/OG/Twitter URL across all HTML pages,
+// plus robots.txt and sitemap.xml, to the single SITE_URL defined in
+// site.config.js (or passed as a CLI arg).
 //
 // Usage:
 //   node scripts/set-site-url.js                      # uses site.config.js
@@ -17,10 +18,12 @@ const SITE_URL = (process.argv[2] || configuredUrl).replace(/\/$/, '');
 // e.g. https://alphastack.in or https://alphastack-site.vercel.app
 const OLD_URL_PATTERN = /https:\/\/[a-z0-9.-]+\.(?:in|vercel\.app)/gi;
 
-const htmlFiles = fs.readdirSync(root).filter((f) => f.endsWith('.html'));
+const targetFiles = fs
+  .readdirSync(root)
+  .filter((f) => f.endsWith('.html') || f === 'robots.txt' || f === 'sitemap.xml');
 
 let totalReplacements = 0;
-for (const file of htmlFiles) {
+for (const file of targetFiles) {
   const filePath = path.join(root, file);
   const content = fs.readFileSync(filePath, 'utf8');
   const matches = content.match(OLD_URL_PATTERN);
