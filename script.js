@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       targetX = e.clientX; targetY = e.clientY;
       if (!active) { x = targetX; y = targetY; active = true; blob.classList.add('active'); }
     }, { passive: true });
-    document.addEventListener('mouseleave', () => blob.classList.remove('active'));
+    document.addEventListener('mouseleave', () => { active = false; blob.classList.remove('active'); });
 
     (function tick() {
       x += (targetX - x) * 0.12;
