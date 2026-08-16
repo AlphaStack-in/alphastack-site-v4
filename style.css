@@ -146,8 +146,7 @@ p{ margin:0; }
 }
 .nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:74px; }
 .brand{ display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:600; font-size:1.15rem; }
-.brand-logo{ height:26px; width:auto; display:block; }
-.nav .brand-logo{ height:52px; }
+.brand-logo{ height:52px; width:auto; display:block; }
 .nav-links{ display:flex; align-items:center; gap:34px; }
 .nav-links a{ font-size:.93rem; color:var(--text-muted); transition:color .2s; position:relative; }
 .nav-links a:hover{ color:var(--text); }
