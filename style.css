@@ -146,12 +146,7 @@ p{ margin:0; }
 }
 .nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:74px; }
 .brand{ display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:600; font-size:1.15rem; }
-.brand-mark{
-  width:30px; height:30px; border-radius:8px;
-  background:linear-gradient(135deg, var(--gold-soft), var(--gold));
-  display:flex; align-items:center; justify-content:center;
-  color:#15100A; font-family:var(--font-mono); font-weight:700; font-size:14px;
-}
+.brand-logo{ height:26px; width:auto; display:block; }
 .nav-links{ display:flex; align-items:center; gap:34px; }
 .nav-links a{ font-size:.93rem; color:var(--text-muted); transition:color .2s; position:relative; }
 .nav-links a:hover{ color:var(--text); }
