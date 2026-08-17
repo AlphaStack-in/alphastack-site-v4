@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trade Boost — Live options signal engine | AlphaStack</title>
-<meta name="description" content="Trade Boost is a live options signal scanning engine for Nifty, Bank Nifty and Sensex, built on Camarilla pivots, EMA/VWAP systems and WaveTrend.">
+<title>Trade Boost — Live Options Signal Scanner | AlphaStack</title>
+<meta name="description" content="Trade Boost is a multi-strategy technical analysis platform for Nifty and Sensex options, sending real-time buy-only alerts to Telegram — manual confirmation required, never auto-executed.">
 <link rel="canonical" href="https://alphastack-site.vercel.app/tradeboost.html">
 <link rel="icon" type="image/png" href="images/alphastack-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Trade Boost — Live options signal engine">
-<meta property="og:description" content="Trade Boost is a live options signal scanning engine for Nifty, Bank Nifty and Sensex, built on Camarilla pivots, EMA/VWAP systems and WaveTrend.">
+<meta property="og:title" content="Trade Boost — Live Options Signal Scanner">
+<meta property="og:description" content="Trade Boost is a multi-strategy technical analysis platform for Nifty and Sensex options, sending real-time buy-only alerts to Telegram — manual confirmation required, never auto-executed.">
 <meta property="og:url" content="https://alphastack-site.vercel.app/tradeboost.html">
 <meta property="og:image" content="https://alphastack-site.vercel.app/logos/Trade-Boost-logo.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Trade Boost — Live options signal engine">
-<meta name="twitter:description" content="Trade Boost is a live options signal scanning engine for Nifty, Bank Nifty and Sensex, built on Camarilla pivots, EMA/VWAP systems and WaveTrend.">
+<meta name="twitter:title" content="Trade Boost — Live Options Signal Scanner">
+<meta name="twitter:description" content="Trade Boost is a multi-strategy technical analysis platform for Nifty and Sensex options, sending real-time buy-only alerts to Telegram — manual confirmation required, never auto-executed.">
 <meta name="twitter:image" content="https://alphastack-site.vercel.app/logos/Trade-Boost-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -45,7 +45,7 @@
   <div class="wrap" style="position:relative; z-index:2;">
     <div class="brand-logo-chip lg mono" style="margin-bottom:20px;"><img src="logos/Trade-Boost-logo.png" alt="Trade Boost logo"></div>
     <h1 class="type-statement" style="margin-top:22px;">Live options <span class="grad">signals</span>, powered by real strategy logic.</h1>
-    <p class="lede">Not a black box. Trade Boost scans Nifty, Bank Nifty and Sensex options using named, testable strategies — and pushes an alert the moment one fires.</p>
+    <p class="lede">Not a black box. Trade Boost scans Nifty and Sensex options across six named, testable strategies and sends a plain-language alert to Telegram the moment one fires — buy-only, and always yours to confirm.</p>
     <div class="hero-actions" style="margin-top:28px;">
       <a href="contact.html" class="btn btn-primary">Get early access</a>
       <a href="#strategies" class="btn btn-ghost">See the strategies</a>
@@ -57,23 +57,38 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Strategy engines</span>
-      <h2>Three systems, running live, side by side.</h2>
+      <h2>Six strategies, watching the market for you.</h2>
     </div>
     <div class="grid-3">
       <div class="strategy-card reveal">
-        <span class="mono">PIVOT-BASED</span>
-        <h3>Camarilla pivots</h3>
-        <p>Breakout and reversal zones from the prior session's range.</p>
-      </div>
-      <div class="strategy-card reveal">
         <span class="mono">TREND-BASED</span>
-        <h3>EMA / VWAP systems</h3>
-        <p>Trend and mean-reversion, anchored to intraday VWAP.</p>
+        <h3>EMA 9/21 Cross</h3>
+        <p>Bullish crossover detection confirmed against VWAP, with a retest/second-cross detector for stronger setups.</p>
       </div>
       <div class="strategy-card reveal">
         <span class="mono">MOMENTUM-BASED</span>
-        <h3>WaveTrend</h3>
-        <p>Momentum shifts, flagged earlier than simple oscillators.</p>
+        <h3>Momentum Breakout</h3>
+        <p>RSI + VWAP + EMA20 + volume confirmation, with full trade journaling and live P&amp;L.</p>
+      </div>
+      <div class="strategy-card reveal">
+        <span class="mono">SMART MONEY</span>
+        <h3>1H Liquidity Hunt</h3>
+        <p>Liquidity-sweep detection with session, volatility, and trend filters.</p>
+      </div>
+      <div class="strategy-card reveal">
+        <span class="mono">INDEX-LEVEL</span>
+        <h3>Index Momentum + OI</h3>
+        <p>Index-level breakout detection with automatic, liquidity-based strike selection.</p>
+      </div>
+      <div class="strategy-card reveal">
+        <span class="mono">PIVOT-BASED</span>
+        <h3>Camarilla Pivot Dashboard</h3>
+        <p>Automated pivot levels with bias detection and auto strike selection.</p>
+      </div>
+      <div class="strategy-card reveal">
+        <span class="mono">CONFIRMATION</span>
+        <h3>Cross-Strategy Confirmation</h3>
+        <p>Alerts require multi-strategy agreement, filtering out noise.</p>
       </div>
     </div>
   </div>
@@ -83,8 +98,8 @@
   <div class="wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
     <div class="reveal">
       <span class="eyebrow">What an alert looks like</span>
-      <h2 style="margin-top:14px;">Entry, target and stop-loss — no guesswork.</h2>
-      <p class="lede" style="margin-top:16px;">Entry, target, stop-loss — liquidity-aware, every time.</p>
+      <h2 style="margin-top:14px;">Plain-language reasoning, sent straight to Telegram.</h2>
+      <p class="lede" style="margin-top:16px;">Every alert explains why it fired, with a confidence score behind it. Buy-only, prefilled — never auto-executed. You always confirm the trade yourself.</p>
     </div>
     <div class="alert-mock reveal">
       <div class="alert-head">
@@ -92,7 +107,7 @@
         <span class="pill pill-buy">BUY</span>
       </div>
       <div class="alert-sym">NIFTY 24800 CE</div>
-      <div class="mono" style="color:var(--text-dim); font-size:.78rem;">Camarilla breakout · R3 reclaim</div>
+      <div class="mono" style="color:var(--text-dim); font-size:.78rem;">EMA 9/21 bullish cross · confirmed against VWAP · 100% confidence</div>
       <div class="alert-rows">
         <div><div class="k">Entry</div><div class="v">142.5</div></div>
         <div><div class="k">Target</div><div class="v" style="color:var(--mint);">198.0</div></div>
@@ -112,8 +127,8 @@
     </div>
     <div class="reveal">
       <span class="eyebrow">The real thing</span>
-      <h2 style="margin-top:14px;">One tap to update every subscriber.</h2>
-      <p class="lede" style="margin-top:16px;">Track potential gain and risk live, then push a status update — trail stop-loss, target hit, re-entry — to every subscriber with a single tap. No retyping the same message across five channels.</p>
+      <h2 style="margin-top:14px;">Every strategy, scanning live.</h2>
+      <p class="lede" style="margin-top:16px;">This is the actual scanner — live NIFTY and SENSEX spot and ATM prices, bullish/bearish market bias, and all six strategies running side by side, with every recent alert logged in real time.</p>
     </div>
   </div>
 </section>
@@ -121,9 +136,9 @@
 <section class="section">
   <div class="wrap">
     <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
-      <span class="eyebrow">Real results</span>
-      <h2>Performance you can verify, trade by trade.</h2>
-      <p class="lede">Every closed call rolls up into a live win-rate and P&amp;L dashboard — the same numbers your subscribers see.</p>
+      <span class="eyebrow">Verify the signal</span>
+      <h2>See the reasoning, not just the call.</h2>
+      <p class="lede">Every EMA cross alert comes with a confidence score, a live price/EMA chart, and a full strike-by-strike breakdown — so you can check the setup yourself before you confirm a trade.</p>
     </div>
     <div class="screenshot reveal" style="max-width:900px; margin:0 auto;">
       <picture>
@@ -144,18 +159,35 @@
       <div class="card card-accent card-accent-mint reveal">
         <div class="icon icon-mint">🖥</div>
         <h3>Web dashboard</h3>
-        <p>Every active signal, live, with full history.</p>
+        <p>Live option-chain view with ATM highlighting, moneyness, confidence scoring, and per-strategy trade journals with live P&amp;L.</p>
       </div>
       <div class="card card-accent card-accent-blue reveal">
         <div class="icon icon-blue">✈</div>
         <h3>Telegram alerts</h3>
-        <p>Instant push alerts, no tab required.</p>
+        <p>Instant push alerts with plain-language reasoning behind every signal — no tab required.</p>
       </div>
       <div class="card card-accent card-accent-gold reveal">
         <div class="icon icon-gold">📱</div>
         <h3>Mobile-ready</h3>
         <p>Responsive on any device, so you're covered when you're away from your desk.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Built to be trusted</span>
+      <h2>Buy-only. Manual confirmation. Always.</h2>
+      <p class="lede">Trade Boost surfaces setups — it never places a trade for you, and it never recommends writing or selling options.</p>
+    </div>
+    <div class="badge-row reveal">
+      <span class="badge">Real-time Angel One SmartAPI feed</span>
+      <span class="badge">Persistent state across restarts</span>
+      <span class="badge">Market-hours aware</span>
+      <span class="badge">Buy-only — never sell/write</span>
+      <span class="badge">Prefill, never auto-execute</span>
     </div>
   </div>
 </section>
@@ -198,7 +230,7 @@
     </div>
     <div class="divider-fade"></div>
     <div class="footer-bottom" style="margin-top:24px;">
-      <p class="disclaimer-short">Trading and investing in securities markets involves risk. Past performance is not indicative of future results. AlphaStack builds and licenses software infrastructure; it is not a SEBI-registered investment adviser or research analyst, and nothing on this website constitutes investment advice. Strategy descriptions above (Camarilla, EMA/VWAP, WaveTrend) are illustrative of platform functionality, not recommendations to trade. <a href="disclaimer.html">Full disclaimer</a>.</p>
+      <p class="disclaimer-short">Trading and investing in securities markets involves risk. Past performance is not indicative of future results. AlphaStack builds and licenses software infrastructure; it is not a SEBI-registered investment adviser or research analyst, and nothing on this website constitutes investment advice. Strategy descriptions above are illustrative of platform functionality, not recommendations to trade. Trade Boost surfaces buy-only alerts requiring your manual confirmation and does not place trades automatically. <a href="disclaimer.html">Full disclaimer</a>.</p>
       <p class="copyright">© 2026 AlphaStack. All rights reserved.</p>
     </div>
   </div>
