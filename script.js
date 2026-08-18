@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Contact form: POST to the /api/contact serverless function
+  // Contact form: POST to the /contact.php mail handler
   const form = document.getElementById('contact-form');
   const status = document.getElementById('contact-status');
   if (form) {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (status) { status.textContent = ''; status.style.color = ''; }
 
       try {
-        const res = await fetch('/api/contact', {
+        const res = await fetch('/contact.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
@@ -144,10 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
           form.reset();
           if (status) { status.textContent = "Thanks — we'll get back to you within one business day."; status.style.color = 'var(--mint)'; }
         } else {
-          if (status) { status.textContent = result.error || 'Something went wrong. Please email hello@alphastack.in directly.'; status.style.color = 'var(--red)'; }
+          if (status) { status.textContent = result.error || 'Something went wrong. Please email info@alphastack.in directly.'; status.style.color = 'var(--red)'; }
         }
       } catch {
-        if (status) { status.textContent = 'Network error — please email hello@alphastack.in directly.'; status.style.color = 'var(--red)'; }
+        if (status) { status.textContent = 'Network error — please email info@alphastack.in directly.'; status.style.color = 'var(--red)'; }
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send message';
