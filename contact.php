@@ -1,14 +1,27 @@
 <?php
 /**
  * AlphaStack contact form handler
- * Drop-in replacement for /api/contact.js (Vercel serverless function)
- * Works on any standard cPanel/shared PHP hosting (GoDaddy included)
+ *
+ * Sends via authenticated SMTP (PHPMailer) through GoDaddy's own mail
+ * server, using the info@alphastack.in mailbox. Plain PHP mail() was tried
+ * first, but alphastack.in's SPF ("-all") and DMARC ("p=reject") policies
+ * only authorize secureserver.net to send as this domain — mail() sends
+ * from the shared web-hosting server instead, so it was silently rejected
+ * downstream even though mail() itself reported success.
  */
+
+require __DIR__ . '/phpmailer/Exception.php';
+require __DIR__ . '/phpmailer/PHPMailer.php';
+require __DIR__ . '/phpmailer/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception as PHPMailerException;
 
 // ── CONFIG ──────────────────────────────────────────────
 $recipientEmail = "info@alphastack.in";
 $siteName       = "AlphaStack";
 $allowedOrigin  = "https://alphastack.in";
+$mailConfigFile = __DIR__ . '/mail-config.php';
 // ────────────────────────────────────────────────────────
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -68,9 +81,16 @@ if (!empty($errors)) {
     exit;
 }
 
+if (!file_exists($mailConfigFile)) {
+    http_response_code(500);
+    echo json_encode(["ok" => false, "error" => "Mail is not configured on the server yet. Please email us directly."]);
+    exit;
+}
+$mailConfig = require $mailConfigFile;
+
 $subject = "$siteName — New enquiry from $name" . ($interest ? " ($interest)" : "");
 
-$body = "New contact form submission on $siteName\n\n";
+$body  = "New contact form submission on $siteName\n\n";
 $body .= "Name:      $name\n";
 $body .= "Company:   " . ($company !== '' ? $company : '—') . "\n";
 $body .= "Email:     $email\n";
@@ -79,16 +99,28 @@ $body .= "Message:\n$message\n\n";
 $body .= "---\nSent: " . date('Y-m-d H:i:s') . "\n";
 $body .= "IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'unknown') . "\n";
 
-$fromAddress = "info@alphastack.in";
-$headers  = "From: $siteName Website <$fromAddress>\r\n";
-$headers .= "Reply-To: $email\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$mail = new PHPMailer(true);
+try {
+    $mail->isSMTP();
+    $mail->Host       = $mailConfig['host'];
+    $mail->Port       = $mailConfig['port'];
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $mailConfig['username'];
+    $mail->Password   = $mailConfig['password'];
+    $mail->SMTPSecure = $mailConfig['encryption']; // 'ssl' (port 465) or 'tls' (port 587)
 
-$sent = mail($recipientEmail, $subject, $body, $headers);
+    $mail->setFrom($mailConfig['username'], $siteName);
+    $mail->addAddress($recipientEmail);
+    $mail->addReplyTo($email, $name !== '' ? $name : $email);
 
-if ($sent) {
+    $mail->isHTML(false);
+    $mail->Subject = $subject;
+    $mail->Body    = $body;
+
+    $mail->send();
     echo json_encode(["ok" => true]);
-} else {
+} catch (PHPMailerException $e) {
+    error_log("Contact form mail failed: " . $mail->ErrorInfo);
     http_response_code(500);
     echo json_encode(["ok" => false, "error" => "Message could not be sent. Please try again or email us directly."]);
 }
