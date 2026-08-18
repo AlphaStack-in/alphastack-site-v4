@@ -5,5 +5,5 @@
 //   node scripts/set-site-url.js
 // to rewrite it across all HTML pages in one shot.
 module.exports = {
-  SITE_URL: 'https://alphastack-site.vercel.app',
+  SITE_URL: 'https://alphastack.in',
 };

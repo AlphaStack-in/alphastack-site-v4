@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alphastack-site.vercel.app/sitemap.xml
+Sitemap: https://alphastack.in/sitemap.xml
